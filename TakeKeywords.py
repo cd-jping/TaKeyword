@@ -4,9 +4,9 @@ import subprocess
 
 
 def read_xmp_with_exiftool(file_path):
-    command = ['exiftool', '-b', '-xmp:Subject', file_path]
+    command = ['exiftool.exe', '-b', '-xmp:Subject', file_path]
     try:
-        result = subprocess.run(command, stdout=subprocess.PIPE, text=True, check=True)
+        result = subprocess.run(command, stdout=subprocess.PIPE, text=True, check=True, encoding="UTF-8")
         xmp_data = ','.join(result.stdout.strip().split('\n'))  # 使用逗号分隔关键字
         return xmp_data
     except subprocess.CalledProcessError:
